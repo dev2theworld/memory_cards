@@ -155,3 +155,48 @@ h1 button {
 .navigation p {
   margin: 0 30px;
 }
+
+.add-container {
+  opacity: 0;
+  z-index: -1;
+  background-color: #f0f0f0;
+  border-top: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  position: absolute;
+  /* setting top & bottom to 0 will stretch it thru all screen */
+  top: 0;
+  bottom: 0;
+  transition: 0.3s ease;
+}
+
+.add-container.show {
+  opacity: 1;
+  z-index: 2;
+}
+
+.add-container h1 {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin: 20px 0 10px;
+}
+
+.form-group textarea {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 12px;
+  min-width: 500px;
+  max-width: 100%;
+}
+
+#add-card {
+  margin-top: 30px;
+}
