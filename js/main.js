@@ -77,3 +77,34 @@ function updateCurrentPageNumber() {
 }
 
 createCards();
+
+// 2d - Event Listeners for prev/next buttons
+nextBtn.addEventListener('click', () => {
+  cardsElement[currentActiveCard].className = 'card left'; // class left allows sliding effect for cards from left
+
+  currentActiveCard = currentActiveCard + 1; // increasing current number when next is clicked
+
+  // checking if we can't go further than last card
+  if(currentActiveCard > cardsElement.length - 1) {
+    currentActiveCard = cardsElement.length - 1;
+  }
+
+  // overwrittig earlier added classes with new ones
+  cardsElement[currentActiveCard].className = 'card active';
+
+  updateCurrentPageNumber();
+});
+
+prevBtn.addEventListener('click', () => {
+  cardsElement[currentActiveCard].className = 'card right';
+
+  currentActiveCard = currentActiveCard - 1;
+
+  if(currentActiveCard < 0) {
+    currentActiveCard = 0;
+  }
+
+  cardsElement[currentActiveCard].className = 'card active';
+
+  updateCurrentPageNumber();
+});
