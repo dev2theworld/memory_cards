@@ -96,6 +96,7 @@ h1 button {
   height: 100%;
   width: 100%;
   position: relative;
+  transform-style: preserve-3d;    /* without this text on the back card would be upside down */
   transition: transform 0.4s ease;
 }
 
@@ -105,6 +106,7 @@ h1 button {
 }
 
 .inner-card-front, .inner-card-back {
+  backface-visibility: hidden;    /* also needed for proper display of text from back card */
   position: absolute;
   top: 0;
   left: 0;

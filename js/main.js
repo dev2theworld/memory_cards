@@ -59,6 +59,9 @@ function createCard(data, index) {
   </div>
   `;
 
+  // 1i - Show The Answer
+  card.addEventListener('click', () => card.classList.toggle('show-answer'));
+
   // 1h - Add to DOM Cards Element
   cardsElement.push(card);
 
