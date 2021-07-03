@@ -85,6 +85,12 @@ function getCardsData() {
   return cards === null ? [] : cards;  // return empty array if it's equal null - else return cards => shorter ver. of if
 }
 
+// 3e - Add Card to Local Storage
+function setCardsData(cards) {
+  localStorage.setItem('cards', JSON.stringify(cards));  // stringify - we're turning array into a string
+  window.location.reload();  // relode page once data is stored so it will reflect in DOM
+}
+
 createCards();
 
 // 2d - Event Listeners for prev/next buttons
@@ -121,3 +127,26 @@ prevBtn.addEventListener('click', () => {
 // 3c - Show and hide add container
 showBtn.addEventListener('click', () => addContainer.classList.add('show'));
 hideBtn.addEventListener('click', () => addContainer.classList.remove('show'));
+
+// 3d - Add card button
+addCardBtn.addEventListener('click', () => {
+  const question = questionElement.value;
+  const answer = answerElement.value;
+  
+  if(question.trim() && answer.trim()) {
+    const newCard = { question, answer };  // create new Card Object
+
+    createCard(newCard);  // create new card from objects data
+
+    // Clearing inpurs
+    questionElement.value = '';
+    answerElement.value = '';
+
+    // Hide add container
+    addContainer.classList.remove('show');
+
+    // Set cards data to Local Storage
+    cardsData.push(newCard);  // adding new card to entire array of cards
+    setCardsData(cardsData);  // passing entire array to seCardsData to store it's content in Local Storage
+  }
+});
