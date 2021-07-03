@@ -16,7 +16,10 @@ let currentActiveCard = 0;
 // 01b - Store DOM Cards
 const cardsElement = [];
 
-// 01c - Store Card Data
+// 3a - Store Card Data - updated ver. -> card data entered by user
+const cardsData = getCardsData();
+
+/* 01c - Store Card Data - hard-coded ver.
 const cardsData = [
 {
   question: 'What must a...',
@@ -30,7 +33,7 @@ const cardsData = [
   question: 'The Last question...',
   answer: 'The Last answer...'
 }
-];
+]; */
 
 // 1d - Create all Cards
 function createCards() {
@@ -76,6 +79,12 @@ function updateCurrentPageNumber() {
   currentElement.innerText = `${currentActiveCard +1}/${cardsElement.length}`;
 }
 
+// 3b - Get Cards from Local Storage
+function getCardsData() {
+  const cards = JSON.parse(localStorage.getItem('cards'));  // parse string to array
+  return cards === null ? [] : cards;  // return empty array if it's equal null - else return cards => shorter ver. of if
+}
+
 createCards();
 
 // 2d - Event Listeners for prev/next buttons
@@ -108,3 +117,7 @@ prevBtn.addEventListener('click', () => {
 
   updateCurrentPageNumber();
 });
+
+// 3c - Show and hide add container
+showBtn.addEventListener('click', () => addContainer.classList.add('show'));
+hideBtn.addEventListener('click', () => addContainer.classList.remove('show'));
