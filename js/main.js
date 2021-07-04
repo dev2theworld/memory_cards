@@ -148,5 +148,14 @@ addCardBtn.addEventListener('click', () => {
     // Set cards data to Local Storage
     cardsData.push(newCard);  // adding new card to entire array of cards
     setCardsData(cardsData);  // passing entire array to seCardsData to store it's content in Local Storage
+  } else {
+    alert('You need to fill all fields');
   }
+});
+
+// 3e - Clear all Cards button
+clearBtn.addEventListener('click', () => {
+  localStorage.clear();
+  cardsContainer.innerHTML = '';
+  window.location.reload();
 });
